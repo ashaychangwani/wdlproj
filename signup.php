@@ -6,7 +6,7 @@
 		<link rel="shortcut icon" href="img/fav.png">
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Music</title>
+		<title>Musix</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 			<!--
@@ -46,26 +46,61 @@
                     </header>
                 </div>
             </section>
-            <div id="login_form">
-                <h1>LOGIN FORM</h1>
-                <p id="login_label">Email : demo@demo.com | Password : demo</p>
-                <form method="post" action="do_login.php" onsubmit="return do_login();">
-                    <input type="text" name="emailid" id="emailid" placeholder="Enter Email">
-                    <br>
-                    <input type="password" name="password" id="password" placeholder="***********">
-                    <br>
-                    <input type="submit" name="login" value="DO LOGIN" id="login_button">
-                </form>
-            </div>
+            <form id="login-form" method="post" action="authen_signup.php">
+                <table border="0.5">
+                    <tr>
+                        <td><label for="username">Enter a username</label></td>
+                        <td><input type="text" name="username" id="username" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Enter your password</label></td>
+                        <td>
+                            <input type="password" name="password" id="password" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="phone">Enter your phone number</label></td>
+                        <td>
+                            <input type="number" name="phone" id="phone" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="card">Enter your card number</label></td>
+                        <td>
+                            <input type="text" name="card" id="card" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="gender">Enter your gender</label></td>
+                        <td>
+                            <input type="text" name="gender" id="gender" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="name">Enter your name</label></td>
+                        <td>
+                            <input type="text" name="name" id="name" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Enter your email</label></td>
+                        <td>
+                            <input type="email" name="email" id="email" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="birthday">Enter your birthday</label></td>
+                        <td>
+                            <input type="date" name="birthday" id="birthday" required>
+                        </td>
+                    </tr>
+                </table>
+                        <input type="submit" value="Submit">
+            </form>
         </body>
             <script src="js/vendor/jquery-2.2.4.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-			<script src="js/vendor/bootstrap.min.js"></script>
-			<script src="js/owl.carousel.min.js"></script>
 			<script src="js/jquery.sticky.js"></script>
-			<script src="js/parallax.min.js"></script>
-			<script src="js/jquery.magnific-popup.min.js"></script>
 			<script src="js/main.js"></script>
-            <script src="js/primary.js"></script>
         
 </html>
