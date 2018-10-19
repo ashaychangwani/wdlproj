@@ -103,40 +103,47 @@
             </div>
             <form id="choice" style="display:block">
                 <input type="button" id="playlist" value="Playlists">
-                <input type="button" id="artist" value="Artists">
+                <input type="button" id="artist" value="Custom Query">
                 <input type="button" id="song" value="Songs">
             </form>
             <section id="pview" style="display:none">
+                <form action="addnew.php" method=post>
+                    <label>Name:</label>
+                    <input type=text id="Aname" name="Aname" placeholder="Enter playlist name">
+                    <label>Genre:</label>
+                    <input type=text id="Agenre" name="Agenre" placeholder="Enter playlist genre">
+                    <input type=submit value="Submit">
+                </form>
+                <table>
+                    <tr>
+                        <th> Playlist name </th>
+                        <th> Genre </th>
+                        <th> Modification Date </th>
+                        <th> Creation Date </th>
+                    </tr>
             <?php
                 require('db_connect.php');
-                $query = "SELECT * FROM `client`";
+                $query = "SELECT * FROM `playlist` WHERE Pname IN (SELECT P1name FROM has1 WHERE U1name='$_SESSION[id]')";
                 $result = mysqli_query($connection, $query);
                 $count = mysqli_num_rows($result);
+                
                 if($result->num_rows>0){
                     while($row=$result->fetch_assoc()){
-                        echo "<p>".$row["Uname"]." " . $row["password"] . "</p>";
+                        echo "<tr><td>".$row["Pname"]."</td><td>" . $row["genre"] . "</td><td>". $row["modification"] ."</td><td>". $row["creation"] ."</td></tr>";
                     }
                 }
                 else{
                     echo "0 results";
                 }
                 ?>
+                </table>
             </section>
             <section id="aview" style="display:none">
-            <?php
-                require('db_connect.php');
-                $query = "SELECT * FROM `artist`";
-                $result = mysqli_query($connection, $query);
-                $count = mysqli_num_rows($result);
-                if($result->num_rows>0){
-                    while($row=$result->fetch_assoc()){
-                        echo "<p>".$row["A2name"]." " . $row["genre2"] . "</p>";
-                    }
-                }
-                else{
-                    echo "0 results";
-                }
-                ?>
+                <form action="randomq.php" method="POST">
+                    <label for="rquery">Enter custom query</label>
+                    <input type="text" id="rquery" name="rquery" placeholder="Enter your query to be executed here" style="width: 50%;">
+                    <input type="submit" value="Submit">                    
+                </form>
             </section>
             <section id="plist" style="display: none">
                 <table id="ptable" style="width: 100%" >
