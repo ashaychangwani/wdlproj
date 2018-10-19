@@ -16,7 +16,7 @@ $query = $_POST['rquery'];
 $result = mysqli_query($connection, $query);
 
 if (!$result) {
-    $message  = 'Invalid query: ' . mysql_error() . "\n";
+    $message  = 'Invalid query: ' .mysqli_error($connection) . "\n";
     $message .= 'Whole query: ' . $query;
     die($message);
 }

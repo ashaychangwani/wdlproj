@@ -26,6 +26,14 @@ $("button").click(function() {
         var P3name=this.id.substr(1,this.id.length);
         document.getElementById("dummyquery").value="INSERT INTO has2(S3name,P3name) values('"+firstclick+"','"+P3name+"');";
     }
+    else if(this.id.match(/^x/)){
+        var P3name=this.id.substr(1,this.id.length);
+        document.getElementById("dummyquery2").value="SELECT S3name FROM `has2` WHERE P3name='"+P3name+"'";
+    }
+    else if(this.id.match(/^y/)){
+        var P3name=this.id.substr(1,this.id.length);
+        document.getElementById("dummyquery2").value="DELETE FROM `has2` WHERE P3name='"+P3name+"'";
+    }
 });
 
 

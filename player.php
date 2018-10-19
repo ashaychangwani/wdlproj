@@ -67,7 +67,7 @@
                             <div class="header-wrap">
                                 <div class="header-top d-flex justify-content-between align-items-center">
                                     <div class="logo">
-                                        <a href="#home"><img src="img/logo.png" alt=""></a>
+                                        <a href="player.php"><img src="img/logo.png" alt=""></a>
                                     </div>
                                     <div class="main-menubar d-flex align-items-center">
                                         <nav class="hide">
@@ -114,13 +114,17 @@
                     <input type=text id="Agenre" name="Agenre" placeholder="Enter playlist genre">
                     <input type=submit value="Submit">
                 </form>
-                <table>
+                <table style="width: 80%">
                     <tr>
                         <th> Playlist name </th>
                         <th> Genre </th>
                         <th> Modification Date </th>
                         <th> Creation Date </th>
+                        <th> View </th>
+                        <th> Delete </th>
                     </tr>
+                <form action="test2.php" method="POST">
+                        <input type="text" value="pretext" name="query2" id="dummyquery2" hidden>
             <?php
                 require('db_connect.php');
                 $query = "SELECT * FROM `playlist` WHERE Pname IN (SELECT P1name FROM has1 WHERE U1name='$_SESSION[id]')";
@@ -129,13 +133,14 @@
                 
                 if($result->num_rows>0){
                     while($row=$result->fetch_assoc()){
-                        echo "<tr><td>".$row["Pname"]."</td><td>" . $row["genre"] . "</td><td>". $row["modification"] ."</td><td>". $row["creation"] ."</td></tr>";
+                        echo "<tr><td>".$row["Pname"]."</td><td>" . $row["genre"] . "</td><td>". $row["modification"] ."</td><td>". $row["creation"] ."</td><td><button id='x".$row["Pname"]."' onSubmit>View</button></td><td><button id='y".$row["Pname"]."' onSubmit>Delete</button></td></tr>";
                     }
                 }
                 else{
                     echo "0 results";
                 }
-                ?>
+                ?><input type="submit" style="display:none" id="dummy2">
+                    </form>
                 </table>
             </section>
             <section id="aview" style="display:none">
