@@ -13,7 +13,7 @@ $email = $_POST['email'];
 $birthday = $_POST['birthday'];
 
 // CHECK FOR THE RECORD FROM TABLE
-$query = "INSERT INTO client2 (Uname,contactn,cardn,password,gender,name,email,birthday) VALUES('$username','$phone','$card','$password','$gender','$name','$email',$birthday)";
+$query = "INSERT INTO client (Uname,contactn,cardn,password,gender,name,email,birthday) VALUES('$username','$phone','$card','$password','$gender','$name','$email',$birthday)";
  
 $result = mysqli_query($connection, $query);
 
@@ -22,7 +22,7 @@ if ($result){
     echo "<script>setTimeout(\"location.href = 'login.php';\",0);</script>";
 
 }else{
-    echo "<script type='text/javascript'>alert('You already have an account')</script>";
+    echo "<script type='text/javascript'>alert('Error')</script>";
     echo "<script>setTimeout(\"location.href = 'signup.php';\",0);</script>";
     
 }

@@ -95,9 +95,9 @@
                 <div id="control-panel" class="control-panel">
                     <div class="album-art"></div>
                     <div class="controls">
-                        <div class="prev"></div>
+                        <div id="prev"  class="prev"></div>
                         <div id="play" class="play"></div>
-                        <div class="next"></div>
+                        <div id="next"  class="next"></div>
                     </div>
                 </div>
             </div>
@@ -223,6 +223,28 @@
             
             
         </body>
+            <audio id="BodakYellow">
+                <source src="Bodak%20Yellow.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="Castle">
+                        <source src="Castle.mp3" type="audio/mpeg">
+                    </audio>
+            <audio id="CocoChanel">
+                        <source src="Coco%20Chanel.mp3" type="audio/mpeg">
+                    </audio>
+            <audio id="Elevate">
+                        <source src="Elevate.mp3" type="audio/mpeg">
+                    </audio>
+            <audio id="FeelSoClose">
+                        <source src="Feel%20So%20Close.mp3" type="audio/mpeg">
+                    </audio>
+            <audio id="FeelsLikeSummer">
+                        <source src="Feels%20Like%20Summer.mp3" type="audio/mpeg">
+                    </audio>
+            <audio id="GirlsLikeYou">
+                        <source src="Girls%20Like%20You.mp3" type="audio/mpeg">
+                    </audio>
+
             <script src="js/vendor/jquery-2.2.4.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 			<script src="js/jquery.sticky.js"></script>

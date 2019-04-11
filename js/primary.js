@@ -8,12 +8,22 @@ var sview=document.getElementById("sview");
 var player=document.getElementById("player");
 var plist=document.getElementById("plist");
 var firstclick;
+var song2;
 
 $("button").click(function() {
     if (this.id.match(/^p/))
-    {
-       new musicPlayer().play2(); document.getElementById("playingArtist").textContent=this.id.substr(1,this.id.length);
+    {document.getElementById("playingArtist").textContent=this.id.substr(1,this.id.length);
         document.getElementById("playingSong").textContent=this.className;
+        try{
+            song2.pause()
+        }
+        catch(err)
+            {
+                
+            }
+        song2 = document.getElementById(this.id.substr(1,this.id.length).replace(/ /g,''));
+        song2.play();
+       musicP.play(song2); 
     }
     else if(this.id.match(/^a/)){
         firstclick=this.id.substr(1,this.id.length);
@@ -77,18 +87,29 @@ back.addEventListener("click",function(){
 
 class musicPlayer {
 	constructor() {
-		this.play = this.play.bind(this);
 		this.playBtn = document.getElementById('play');
-		this.playBtn.addEventListener('click', this.play);
+		this.playBtn.addEventListener('click', this.play2);
 		this.controlPanel = document.getElementById('control-panel');
 		this.infoBar = document.getElementById('info');
+        var song2=null;
 	}
 
-	play() {
+	play(song2) {
+
+        song2=song2;
+        //alert(songPlayin);
 		let controlPanelObj = this.controlPanel,
-		infoBarObj = this.infoBar
+		infoBarObj = this.infoBar,songObj=song2
+        
+        Array.from(controlPanelObj.classList).find(function(element){
+                return element !== "active" ? controlPanelObj.classList.add('active') : 		controlPanelObj.classList.remove('active');
+			});
 		Array.from(controlPanelObj.classList).find(function(element){
-					return element !== "active" ? controlPanelObj.classList.add('active') : 		controlPanelObj.classList.remove('active');
+					try{
+                        return element !== "active" ? songObj.pause():songObj.play();
+                    }
+                    catch(err)
+                        {}
 			});
 		
 		Array.from(infoBarObj.classList).find(function(element){
@@ -96,17 +117,34 @@ class musicPlayer {
 			});
 	}
     
-    play2(){
-        let controlPanelObj = this.controlPanel,
-		infoBarObj = this.infoBar
+    play2() {
+        
+        //var songName=document.getElementById("playingSong").textContent.replace(/ /g,'');
+        //var songObj=document.getElementById(songName);
+        
+		var controlPanelObj = document.getElementById('control-panel');
+		var infoBarObj = document.getElementById('info');
+		
+        var t1=controlPanelObj.classList
+        Array.from(controlPanelObj.classList).find(function(element){
+                return element !== "active" ? controlPanelObj.classList.add('active') : 		controlPanelObj.classList.remove('active');
+			});
 		Array.from(controlPanelObj.classList).find(function(element){
-            controlPanelObj.classList.add('active');
+					try{
+                        return element !== "active" ? song2.pause():song2.play();
+                    }
+                    catch(err)
+                        {}
 			});
 		
 		Array.from(infoBarObj.classList).find(function(element){
-            infoBarObj.classList.add('active');
+					return element !== "active" ? infoBarObj.classList.add('active') : 		infoBarObj.classList.remove('active');
 			});
-    }
+	}
+    
+    
+    
 }
 
-const newMusicplayer = new musicPlayer();
+var musicP=new musicPlayer()
+const newMusicplayer = new musicPlayer(song2);
